@@ -27,7 +27,12 @@ struct WelcomePageView: View {
                     .accessibilityIdentifier("makers-logo")
                 
                 Spacer()
-
+                
+                Button("Login") {
+                    // TODO: login logic
+                }
+                .accessibilityIdentifier("LoginButton")
+                
                 Button("Sign Up") {
                     // TODO: sign up logic
                 }

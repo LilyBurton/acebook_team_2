@@ -27,12 +27,13 @@ struct PostView: View {
                 .padding(.horizontal)
                 HStack{
                     AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
-                    
-                    TextField("Penny for your thoughts", text:$post)
-                    //                    .background(Color.blue)
-                        .foregroundColor(.black)
-                        .cornerRadius(10)
-                        .padding()
+                        .clipShape(Circle())
+                            .frame(width: 60, height: 60)
+                            .padding()
+                        Spacer()
+                        TextField("Penny for your thoughts", text:$post)
+                            .padding()
+                            .frame(maxWidth: .infinity)
                 }
                 Text("Hello")
                 Spacer() // Pushes the Hello text to the top

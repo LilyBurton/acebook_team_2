@@ -19,25 +19,30 @@ struct SignUpPageView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var confirmPass = ""
+
     @State private var errorMessage: String? = nil
     //    @State private var attachFile = ""
+    @State private var isActive = false
+
     
     var body: some View {
         
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [ .blue, Color("lightblue")]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-            .ignoresSafeArea()
-            
-            VStack {
-                Image("makers-logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .accessibilityIdentifier("makers-logo")
+        NavigationView {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [ .blue, Color("lightblue")]),
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
+                .ignoresSafeArea()
                 
-                Spacer()
+
+                VStack {
+                    Image("makers-logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .accessibilityIdentifier("makers-logo")
+                    
+                     Spacer()
                 
                 Form {
                     Section(header: Text("Sign Up")){
@@ -50,22 +55,33 @@ struct SignUpPageView: View {
                                 Text(error)
                                     .foregroundColor(.red)
                     }
+                  }
                     
                 }
-                .frame(width: 400, height: 500)
-                .scrollContentBackground(.hidden)
-                
-                Spacer()
-                Button ("Submit", action: submitUser)
-                    .frame(width: 280, height: 50)
-                    .background(.orange.gradient)
-                    .foregroundColor(.white)
-                    .font(.system(size: 20, weight: .bold))
-                    .cornerRadius(25)
-                
+                    .frame(width: 400, height: 500)
+                    .scrollContentBackground(.hidden)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.submitUser()
+                        self.isActive = true
+                    }) {
+                        Text("Submit")
+                            .frame(width: 280, height: 50)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.orange]), startPoint: .leading, endPoint: .trailing))
+                            .foregroundColor(.white)
+                            .font(.system(size: 20, weight: .bold))
+                            .cornerRadius(25)
+                    }
+                    NavigationLink("", destination: LoginView(), isActive: $isActive)
+                    
+                    
+                }
             }
         }
-    }
+
+    
     
     func isValidUserName() -> Bool {
         return username.count >= 5

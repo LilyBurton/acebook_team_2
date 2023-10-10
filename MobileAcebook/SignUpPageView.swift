@@ -19,8 +19,11 @@ struct SignUpPageView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var confirmPass = ""
-//    @State private var attachFile = ""
+
+    @State private var errorMessage: String? = nil
+    //    @State private var attachFile = ""
     @State private var isActive = false
+
     
     var body: some View {
         
@@ -31,6 +34,7 @@ struct SignUpPageView: View {
                                endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 
+
                 VStack {
                     Image("makers-logo")
                         .resizable()
@@ -38,16 +42,22 @@ struct SignUpPageView: View {
                         .frame(width: 200, height: 200)
                         .accessibilityIdentifier("makers-logo")
                     
-                    Spacer()
-                    
-                    Form {
-                        Section(header: Text("Sign Up")){
-                            TextField("Email", text: $email)
-                            TextField("Username", text: $username)
-                            TextField("Password", text: $password)
-                            TextField("Confirm Password", text: $confirmPass)
-                        }
+                     Spacer()
+                
+                Form {
+                    Section(header: Text("Sign Up")){
+                        TextField("Email", text: $email)
+                        TextField("Username", text: $username)
+                        SecureField("Password", text: $password)
+                        SecureField("Confirm Password", text: $confirmPass)
                     }
+                    if let error = errorMessage {
+                                Text(error)
+                                    .foregroundColor(.red)
+                    }
+                  }
+                    
+                }
                     .frame(width: 400, height: 500)
                     .scrollContentBackground(.hidden)
                     
@@ -65,30 +75,53 @@ struct SignUpPageView: View {
                             .cornerRadius(25)
                     }
                     NavigationLink("", destination: LoginView(), isActive: $isActive)
-                    }
+                    
+                    
                 }
             }
         }
 
     
     
+    func isValidUserName() -> Bool {
+        return username.count >= 5
+    }
+    
+    func isValidPassword() -> Bool {
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
+    
+    func isValidEmail() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
     func submitUser() {
-        if password == confirmPass {
+        if !isValidUserName() {
+            errorMessage = "Invalid Username"
+            return
+        } else if !isValidPassword() {
+            errorMessage = "Passwords must contain a special character,8 letters, a number and capital letter"
+            return
+        } else if !isValidEmail(){
+            errorMessage = "Please enter a valid email"
+            return
+        } else if password == confirmPass {
             let user = User(email: email, username: username, password: password)
             authenticationService.signUp(user: user)
             email = ""
             username = ""
             password = ""
             confirmPass = ""
-        } else {
-            password = "Passwords do not match"
-            confirmPass = ""
+            errorMessage = nil
         }
     }
-}
-
-struct SignUpPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpPageView(authenticationService: AuthenticationService())
+    
+    struct SignUpPageView_Previews: PreviewProvider {
+        static var previews: some View {
+            SignUpPageView(authenticationService: AuthenticationService())
+        }
     }
 }

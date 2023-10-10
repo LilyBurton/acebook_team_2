@@ -27,20 +27,19 @@ struct SignUpPageView: View {
     
     var body: some View {
         
-        NavigationView {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [ .blue, Color("lightblue")]),
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-                
-                
-                VStack {
-                    Image("makers-logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 200)
-                        .accessibilityIdentifier("makers-logo")
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [ .orange, .white]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+            .ignoresSafeArea()
+            
+            VStack {
+                Image("makers-logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .accessibilityIdentifier("makers-logo")
+
                     
                     Spacer()
                     
@@ -69,7 +68,7 @@ struct SignUpPageView: View {
                     }) {
                         Text("Submit")
                             .frame(width: 280, height: 50)
-                            .background(LinearGradient(gradient: Gradient(colors: [Color.orange]), startPoint: .leading, endPoint: .trailing))
+                            .background(.black.gradient)
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .bold))
                             .cornerRadius(25)
@@ -77,7 +76,7 @@ struct SignUpPageView: View {
                     NavigationLink("", destination: LoginView(), isActive: $isActive)
                     
                 }
-            }
+
             }
         }
 

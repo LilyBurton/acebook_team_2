@@ -15,6 +15,7 @@ struct WelcomePageView: View {
     }
     
     var body: some View {
+
         NavigationView {
             ZStack {
                 VStack {
@@ -47,11 +48,10 @@ struct WelcomePageView: View {
                     .accessibilityIdentifier("loginButton")
                     
                     Spacer()
+                }}
                 }
             }
         }
-    }
-}
 
 struct WelcomePageView_Previews: PreviewProvider {
     static var previews: some View {

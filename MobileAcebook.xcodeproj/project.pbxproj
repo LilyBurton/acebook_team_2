@@ -112,11 +112,11 @@
 				AE5D85DF2AC9AF83009680C6 /* Models */,
 				AE5D85DD2AC9AF72009680C6 /* Services */,
 				AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */,
-				D94605322AD43BFB00327439 /* WelcomePageView.swift */,
 				AE5D85B32AC8A224009680C6 /* Assets.xcassets */,
 				AE5D85B52AC8A224009680C6 /* Preview Content */,
 				D94605342AD443F400327439 /* PostView.swift */,
 				D94605362AD44B7D00327439 /* SignUpPageView.swift */,
+				D94605322AD43BFB00327439 /* WelcomePageView.swift */,
 			);
 			path = MobileAcebook;
 			sourceTree = "<group>";

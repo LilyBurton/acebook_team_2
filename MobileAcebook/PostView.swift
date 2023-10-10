@@ -18,9 +18,9 @@ struct PostView: View {
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                         .accessibilityIdentifier("makers-logo")
-                    Spacer() // Pushes the Log Out button to the right
+                    Spacer()
                     Button("Log Out") {
-                        // Add your log out action here
+                        // Add log out action here
                     }
                     .accessibilityIdentifier("logOutButton")
                 }

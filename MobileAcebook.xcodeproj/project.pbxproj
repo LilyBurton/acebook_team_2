@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49F9607B2AD55F1B007F5607 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9607A2AD55F1B007F5607 /* LoginView.swift */; };
 		AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */; };
 		AE5D85B42AC8A224009680C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D85B32AC8A224009680C6 /* Assets.xcassets */; };
 		AE5D85B72AC8A224009680C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D85B62AC8A224009680C6 /* Preview Assets.xcassets */; };
@@ -44,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49F9607A2AD55F1B007F5607 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AE5D85AC2AC8A221009680C6 /* MobileAcebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileAcebook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAcebookApp.swift; sourceTree = "<group>"; };
 		AE5D85B32AC8A224009680C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				AE5D85B32AC8A224009680C6 /* Assets.xcassets */,
 				AE5D85B52AC8A224009680C6 /* Preview Content */,
 				D94605342AD443F400327439 /* PostView.swift */,
-				49F9607A2AD55F1B007F5607 /* LoginView.swift */,
 				D94605362AD44B7D00327439 /* SignUpPageView.swift */,
 				D946053A2AD55B0B00327439 /* WelcomePageView.swift */,
 				D946053C2AD55BAD00327439 /* LoginPageView.swift */,
@@ -326,7 +323,6 @@
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
 				D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */,
 				D94605352AD443F400327439 /* PostView.swift in Sources */,
-				49F9607B2AD55F1B007F5607 /* LoginView.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
 				D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */,
 			);

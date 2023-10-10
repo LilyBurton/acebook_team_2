@@ -24,7 +24,7 @@ struct SignUpPageView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [ .blue, Color("lightblue")]),
+            LinearGradient(gradient: Gradient(colors: [ .orange, .white]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
             .ignoresSafeArea()
@@ -52,11 +52,11 @@ struct SignUpPageView: View {
                 Spacer()
                 Button ("Submit", action: submitUser)
                     .frame(width: 280, height: 50)
-                    .background(.orange.gradient)
+                    .background(.black.gradient)
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .bold))
                     .cornerRadius(25)
-                    .padding(.top, 50)
+        
                 
             }
         }

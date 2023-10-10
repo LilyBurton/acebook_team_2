@@ -8,5 +8,5 @@
 public protocol AuthenticationServiceProtocol {
     func signUp(user: User)
     
-//    func login(user: User) -> Bool
+    func login(user: UserLogin)
 }

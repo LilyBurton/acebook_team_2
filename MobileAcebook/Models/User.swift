@@ -10,3 +10,8 @@ public struct User {
     let username: String
     let password: String
 }
+
+public struct UserLogin {
+    let email: String
+    let password: String
+}

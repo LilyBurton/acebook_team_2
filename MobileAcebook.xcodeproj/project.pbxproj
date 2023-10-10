@@ -18,9 +18,11 @@
 		AE5D85E32AC9AFD2009680C6 /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E22AC9AFD2009680C6 /* MockAuthenticationService.swift */; };
 		AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E52AC9B077009680C6 /* AuthenticationServiceProtocol.swift */; };
 		AE5D85E82AC9B29A009680C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E72AC9B29A009680C6 /* User.swift */; };
-		D94605332AD43BFB00327439 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605322AD43BFB00327439 /* WelcomePageView.swift */; };
 		D94605352AD443F400327439 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605342AD443F400327439 /* PostView.swift */; };
 		D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605362AD44B7D00327439 /* SignUpPageView.swift */; };
+		D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053A2AD55B0B00327439 /* WelcomePageView.swift */; };
+		D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053C2AD55BAD00327439 /* LoginPageView.swift */; };
+		D946053F2AD58DE800327439 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053E2AD58DE800327439 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +57,11 @@
 		AE5D85E22AC9AFD2009680C6 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
 		AE5D85E52AC9B077009680C6 /* AuthenticationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceProtocol.swift; sourceTree = "<group>"; };
 		AE5D85E72AC9B29A009680C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D94605322AD43BFB00327439 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		D94605342AD443F400327439 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		D94605362AD44B7D00327439 /* SignUpPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageView.swift; sourceTree = "<group>"; };
+		D946053A2AD55B0B00327439 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
+		D946053C2AD55BAD00327439 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
+		D946053E2AD58DE800327439 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +120,8 @@
 				AE5D85B52AC8A224009680C6 /* Preview Content */,
 				D94605342AD443F400327439 /* PostView.swift */,
 				D94605362AD44B7D00327439 /* SignUpPageView.swift */,
-				D94605322AD43BFB00327439 /* WelcomePageView.swift */,
+				D946053A2AD55B0B00327439 /* WelcomePageView.swift */,
+				D946053C2AD55BAD00327439 /* LoginPageView.swift */,
 			);
 			path = MobileAcebook;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5D85E72AC9B29A009680C6 /* User.swift */,
+				D946053E2AD58DE800327439 /* Token.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,13 +316,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D946053F2AD58DE800327439 /* Token.swift in Sources */,
 				D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */,
 				AE5D85E12AC9AFA9009680C6 /* AuthenticationService.swift in Sources */,
 				AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */,
-				D94605332AD43BFB00327439 /* WelcomePageView.swift in Sources */,
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
+				D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */,
 				D94605352AD443F400327439 /* PostView.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
+				D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

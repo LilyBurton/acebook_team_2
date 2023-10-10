@@ -2,7 +2,7 @@
 //  WelcomePageView.swift
 //  MobileAcebook
 //
-//  Created by Kumani Kidd on 09/10/2023.
+//  Created by Kumani Kidd on 10/10/2023.
 //
 
 import SwiftUI
@@ -18,6 +18,10 @@ struct WelcomePageView: View {
 
         NavigationView {
             ZStack {
+                LinearGradient(gradient: Gradient(colors: [ .orange, .white]),
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
+                .ignoresSafeArea()
                 VStack {
                     Spacer()
                     
@@ -42,19 +46,20 @@ struct WelcomePageView: View {
                     }
                     .accessibilityIdentifier("signUpButton")
                     
-                    Button("Login") {
-                        
-                    }
-                    .accessibilityIdentifier("loginButton")
-                    
+                    NavigationLink(destination: loginPageView(authenticationService: authenticationService)) {
+                        Text("Login")
+                            .accessibilityIdentifier("loginButton")
+                        }
                     Spacer()
-                }}
                 }
             }
         }
+    }
+}
 
 struct WelcomePageView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomePageView(authenticationService: AuthenticationService())
     }
 }
+

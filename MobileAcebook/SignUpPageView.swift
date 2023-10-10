@@ -34,7 +34,7 @@ struct SignUpPageView: View {
                                endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 
-
+                
                 VStack {
                     Image("makers-logo")
                         .resizable()
@@ -42,22 +42,22 @@ struct SignUpPageView: View {
                         .frame(width: 200, height: 200)
                         .accessibilityIdentifier("makers-logo")
                     
-                     Spacer()
-                
-                Form {
-                    Section(header: Text("Sign Up")){
-                        TextField("Email", text: $email)
-                        TextField("Username", text: $username)
-                        SecureField("Password", text: $password)
-                        SecureField("Confirm Password", text: $confirmPass)
-                    }
-                    if let error = errorMessage {
-                                Text(error)
-                                    .foregroundColor(.red)
-                    }
-                  }
+                    Spacer()
                     
-                }
+                    Form {
+                        Section(header: Text("Sign Up")){
+                            TextField("Email", text: $email)
+                            TextField("Username", text: $username)
+                            SecureField("Password", text: $password)
+                            SecureField("Confirm Password", text: $confirmPass)
+                        }
+                        if let error = errorMessage {
+                            Text(error)
+                                .foregroundColor(.red)
+                        }
+                    }
+                    
+                    
                     .frame(width: 400, height: 500)
                     .scrollContentBackground(.hidden)
                     
@@ -65,7 +65,7 @@ struct SignUpPageView: View {
                     
                     Button(action: {
                         self.submitUser()
-                        self.isActive = true
+                        
                     }) {
                         Text("Submit")
                             .frame(width: 280, height: 50)
@@ -76,8 +76,8 @@ struct SignUpPageView: View {
                     }
                     NavigationLink("", destination: LoginView(), isActive: $isActive)
                     
-                    
                 }
+            }
             }
         }
 
@@ -116,6 +116,7 @@ struct SignUpPageView: View {
             password = ""
             confirmPass = ""
             errorMessage = nil
+            self.isActive = true
         }
     }
     

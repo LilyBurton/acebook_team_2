@@ -13,12 +13,14 @@
 		AE5D85C12AC8A224009680C6 /* MobileAcebookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85C02AC8A224009680C6 /* MobileAcebookTests.swift */; };
 		AE5D85CB2AC8A224009680C6 /* MobileAcebookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85CA2AC8A224009680C6 /* MobileAcebookUITests.swift */; };
 		AE5D85CD2AC8A224009680C6 /* MobileAcebookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85CC2AC8A224009680C6 /* MobileAcebookUITestsLaunchTests.swift */; };
-		AE5D85DA2AC8A337009680C6 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85D92AC8A337009680C6 /* WelcomePageView.swift */; };
 		AE5D85DC2AC8A422009680C6 /* WelcomePageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85DB2AC8A422009680C6 /* WelcomePageUITests.swift */; };
 		AE5D85E12AC9AFA9009680C6 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E02AC9AFA9009680C6 /* AuthenticationService.swift */; };
 		AE5D85E32AC9AFD2009680C6 /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E22AC9AFD2009680C6 /* MockAuthenticationService.swift */; };
 		AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E52AC9B077009680C6 /* AuthenticationServiceProtocol.swift */; };
 		AE5D85E82AC9B29A009680C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85E72AC9B29A009680C6 /* User.swift */; };
+		D94605332AD43BFB00327439 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605322AD43BFB00327439 /* WelcomePageView.swift */; };
+		D94605352AD443F400327439 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605342AD443F400327439 /* PostView.swift */; };
+		D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605362AD44B7D00327439 /* SignUpPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,12 +50,14 @@
 		AE5D85C62AC8A224009680C6 /* MobileAcebookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileAcebookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D85CA2AC8A224009680C6 /* MobileAcebookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAcebookUITests.swift; sourceTree = "<group>"; };
 		AE5D85CC2AC8A224009680C6 /* MobileAcebookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAcebookUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AE5D85D92AC8A337009680C6 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		AE5D85DB2AC8A422009680C6 /* WelcomePageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageUITests.swift; sourceTree = "<group>"; };
 		AE5D85E02AC9AFA9009680C6 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		AE5D85E22AC9AFD2009680C6 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
 		AE5D85E52AC9B077009680C6 /* AuthenticationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceProtocol.swift; sourceTree = "<group>"; };
 		AE5D85E72AC9B29A009680C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D94605322AD43BFB00327439 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
+		D94605342AD443F400327439 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		D94605362AD44B7D00327439 /* SignUpPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,9 @@
 				AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */,
 				AE5D85B32AC8A224009680C6 /* Assets.xcassets */,
 				AE5D85B52AC8A224009680C6 /* Preview Content */,
-				AE5D85D92AC8A337009680C6 /* WelcomePageView.swift */,
+				D94605342AD443F400327439 /* PostView.swift */,
+				D94605362AD44B7D00327439 /* SignUpPageView.swift */,
+				D94605322AD43BFB00327439 /* WelcomePageView.swift */,
 			);
 			path = MobileAcebook;
 			sourceTree = "<group>";
@@ -304,11 +310,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */,
 				AE5D85E12AC9AFA9009680C6 /* AuthenticationService.swift in Sources */,
 				AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */,
+				D94605332AD43BFB00327439 /* WelcomePageView.swift in Sources */,
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
+				D94605352AD443F400327439 /* PostView.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
-				AE5D85DA2AC8A337009680C6 /* WelcomePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileAcebook/Preview Content\"";
+				DEVELOPMENT_TEAM = NYWVF37X24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -497,6 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileAcebook/Preview Content\"";
+				DEVELOPMENT_TEAM = NYWVF37X24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

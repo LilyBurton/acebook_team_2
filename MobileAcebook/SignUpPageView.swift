@@ -19,11 +19,11 @@ struct SignUpPageView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var confirmPass = ""
-
+    
     @State private var errorMessage: String? = nil
     //    @State private var attachFile = ""
     @State private var isActive = false
-
+    
     
     var body: some View {
         
@@ -39,47 +39,48 @@ struct SignUpPageView: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .accessibilityIdentifier("makers-logo")
-
-                    
-                    Spacer()
-                    
-                    Form {
-                        Section(header: Text("Sign Up")){
-                            TextField("Email", text: $email)
-                            TextField("Username", text: $username)
-                            SecureField("Password", text: $password)
-                            SecureField("Confirm Password", text: $confirmPass)
-                        }
-                        if let error = errorMessage {
-                            Text(error)
-                                .foregroundColor(.red)
-                        }
+                
+                
+                Spacer()
+                
+                Form {
+                    Section(header: Text("Sign Up")){
+                        TextField("Email", text: $email)
+                        TextField("Username", text: $username)
+                        SecureField("Password", text: $password)
+                        SecureField("Confirm Password", text: $confirmPass)
                     }
-                    
-                    
-                    .frame(width: 400, height: 500)
-                    .scrollContentBackground(.hidden)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.submitUser()
-                        
-                    }) {
-                        Text("Submit")
-                            .frame(width: 280, height: 50)
-                            .background(.black.gradient)
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .bold))
-                            .cornerRadius(25)
+                    if let error = errorMessage {
+                        Text(error)
+                            .foregroundColor(.red)
                     }
-                    NavigationLink("", destination: LoginView(), isActive: $isActive)
-                    
                 }
-
+                
+                
+                .frame(width: 400, height: 500)
+                .scrollContentBackground(.hidden)
+                
+                Spacer()
+                
+                Button(action: {
+                    self.submitUser()
+                    
+                }) {
+                    Text("Submit")
+                        .frame(width: 280, height: 50)
+                        .background(.black.gradient)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .bold))
+                        .cornerRadius(25)
+                }
+                NavigationLink("", destination: loginPageView(authenticationService: authenticationService), isActive: $isActive)
+                
             }
+            
         }
-
+    }
+    
+    
     
     
     func isValidUserName() -> Bool {
@@ -119,9 +120,11 @@ struct SignUpPageView: View {
         }
     }
     
+    
     struct SignUpPageView_Previews: PreviewProvider {
         static var previews: some View {
             SignUpPageView(authenticationService: AuthenticationService())
         }
     }
+    
 }

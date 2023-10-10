@@ -99,14 +99,14 @@ struct SignUpPageView: View {
     }
     
     func submitUser() {
-        if !isValidUserName() {
-            errorMessage = "Invalid Username"
+        if !isValidEmail(){
+            errorMessage = "Please enter a valid email"
             return
         } else if !isValidPassword() {
             errorMessage = "Passwords must contain a special character,8 letters, a number and capital letter"
             return
-        } else if !isValidEmail(){
-            errorMessage = "Please enter a valid email"
+        } else if !isValidUserName() {
+            errorMessage = "Invalid Username"
             return
         } else if password == confirmPass {
             let user = User(email: email, username: username, password: password)

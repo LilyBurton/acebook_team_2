@@ -33,7 +33,7 @@ struct SignUpPageView: View {
                            endPoint: .bottomTrailing)
             .ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 40) {
                 Image("makers-logo")
                     .resizable()
                     .scaledToFit()
@@ -41,24 +41,37 @@ struct SignUpPageView: View {
                     .accessibilityIdentifier("makers-logo")
                 
                 
-                Spacer()
                 
-                Form {
-                    Section(header: Text("Sign Up")){
-                        TextField("Email", text: $email)
-                        TextField("Username", text: $username)
-                        SecureField("Password", text: $password)
-                        SecureField("Confirm Password", text: $confirmPass)
-                    }
+                TextField("Email", text: $email)
+                    .padding()
+                    .frame(width: 350)
+                    .background(.white)
+                    .cornerRadius(25)
+                TextField("Username", text: $username)
+                    .padding()
+                    .frame(width: 350)
+                    .background(.white)
+                    .cornerRadius(25)
+                SecureField("Password", text: $password)
+                    .padding()
+                    .frame(width: 350)
+                    .background(.white)
+                    .cornerRadius(25)
+                SecureField("Confirm Password", text: $confirmPass)
+                    .padding()
+                    .frame(width: 350)
+                    .background(.white)
+                    .cornerRadius(25)
                     if let error = errorMessage {
                         Text(error)
                             .foregroundColor(.red)
+                            .fixedSize(horizontal: false, vertical: true)
+                            
                     }
-                }
                 
                 
-                .frame(width: 400, height: 500)
-                .scrollContentBackground(.hidden)
+                
+                
                 
                 Spacer()
                 

@@ -12,8 +12,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
     var activeToken = ""
 
     
-    func signUp(user: User) {
-        
+    func signUp(user: User, completion: @escaping (String?) -> Void) {
         var request = URLRequest(url: URL(string: "http://127.0.0.1:8080/users")!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -25,16 +24,27 @@ class AuthenticationService: AuthenticationServiceProtocol {
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
 
-        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
-               return
+                print("Error:", error?.localizedDescription ?? "Unknown error")
+                completion(nil)
+                return
             }
             do {
-                let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("Succces: \(response)")
+                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
+                    print(jsonResponse)
+                    if let message = jsonResponse["message"] as? String {
+                        completion(message)
+                    } else {
+                        completion(nil)
+                    }
+                } else {
+                    completion(nil)
+                }
             }
             catch {
                 print(error)
+                completion(nil)
             }
         }
         task.resume()

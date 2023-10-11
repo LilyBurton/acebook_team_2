@@ -40,16 +40,24 @@ struct WelcomePageView: View {
                     
                     Spacer()
                     
+                    
+                    NavigationLink(destination: loginPageView(authenticationService: authenticationService)) {
+                        Text("Login")
+                            .frame(width: 280, height: 50)
+                            .background(.black.gradient)
+                            . foregroundColor(.white)
+                            .font(.system(size: 20, weight: .bold))
+                            .cornerRadius(25)
+                            .accessibilityIdentifier("loginButton")
+                        }
+                    
                     NavigationLink(destination: SignUpPageView(authenticationService: authenticationService)) {
                         Text("Sign up")
+                            . foregroundColor(.black)
                             .padding()
                     }
                     .accessibilityIdentifier("signUpButton")
                     
-                    NavigationLink(destination: loginPageView(authenticationService: authenticationService)) {
-                        Text("Login")
-                            .accessibilityIdentifier("loginButton")
-                        }
                     Spacer()
                 }
             }

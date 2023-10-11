@@ -111,6 +111,12 @@ struct SignUpPageView: View {
         return emailPredicate.evaluate(with: email)
     }
     
+    func isPasswordMatch() -> Bool {
+        return password == confirmPass
+    }
+    
+    
+    
     func submitUser() {
         if !isValidEmail(){
             errorMessage = "Please enter a valid email"
@@ -121,23 +127,30 @@ struct SignUpPageView: View {
         } else if !isValidUserName() {
             errorMessage = "Invalid Username"
             return
-        } else if password == confirmPass {
+        } else if !isPasswordMatch(){
+            errorMessage = "Passwords must match"
+            return
+        } else {
             let user = User(email: email, username: username, password: password)
-            authenticationService.signUp(user: user)
-            email = ""
-            username = ""
-            password = ""
-            confirmPass = ""
-            errorMessage = nil
-            self.isActive = true
+            authenticationService.signUp(user: user){ message in
+                if message == "Email address already exists" {
+                    errorMessage = message
+                } else if message == "OK" {
+                    email = ""
+                    username = ""
+                    password = ""
+                    confirmPass = ""
+                    errorMessage = nil
+                    self.isActive = true}
+            }
         }
-    }
-    
-    
-    struct SignUpPageView_Previews: PreviewProvider {
-        static var previews: some View {
-            SignUpPageView(authenticationService: AuthenticationService())
+        
+        
+        struct SignUpPageView_Previews: PreviewProvider {
+            static var previews: some View {
+                SignUpPageView(authenticationService: AuthenticationService())
+            }
         }
+        
     }
-    
 }

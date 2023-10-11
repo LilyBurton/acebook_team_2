@@ -50,7 +50,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
         task.resume()
     }
     
-    func login(user: UserLogin) {
+    func login(user: UserLogin, closure: @escaping (Bool) -> Void) {
         
         var request = URLRequest(url: URL(string: "http://127.0.0.1:8080/tokens")!)
         request.httpMethod = "POST"
@@ -64,15 +64,18 @@ class AuthenticationService: AuthenticationServiceProtocol {
 
         let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             guard let data = data, error == nil else {
+                closure(false)
                return
             }
             do {
                 let response = try JSONDecoder().decode(Token.self, from: data)
                 self.activeToken = response.token
                 print(self.activeToken)
+                closure(true)
             }
             catch {
                 print(error)
+                closure(false)
             }
         }
         task.resume()

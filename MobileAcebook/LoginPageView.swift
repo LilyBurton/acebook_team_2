@@ -36,14 +36,14 @@ struct loginPageView: View {
                 
                 Spacer()
                 
-            
+                
                 TextField("Email", text: $email)
                     .padding()
                     .frame(width: 350)
                     .background(.white)
                     .cornerRadius(25)
-                    
-                    
+                
+                
                 
                 HStack {
                     if isSecured == true {
@@ -51,7 +51,7 @@ struct loginPageView: View {
                     } else {
                         TextField("Password" , text: $password)
                     }
-                        
+                    
                     
                     Image(systemName: "eye.fill" )
                         .onTapGesture {
@@ -63,14 +63,14 @@ struct loginPageView: View {
                         }
                         .padding()
                 }
-                    .padding(.leading)
-                    .frame(width: 350)
-                    .background(.white)
-                    .cornerRadius(25)
-                    
-//
+                .padding(.leading)
+                .frame(width: 350)
+                .background(.white)
+                .cornerRadius(25)
+                
+                //
                 Spacer()
-                    
+                
                 Button (action: { self.loginUser()
                     
                     
@@ -83,7 +83,7 @@ struct loginPageView: View {
                         .font(.system(size: 20, weight: .bold))
                         .cornerRadius(25)
                 }
-                NavigationLink("", destination: PostView(), isActive: $isActive)
+                NavigationLink("", destination: PostPageView(), isActive: $isActive)
                 Spacer()
                 
             }
@@ -91,13 +91,22 @@ struct loginPageView: View {
     }
     func loginUser() {
         let user = UserLogin(email: email, password: password)
-        authenticationService.login(user: user)
-        self.isActive = true
-    
-        
-        
+        authenticationService.login(user: user) { success in
+            if success {
+                if !authenticationService.activeToken.isEmpty {
+                    self.isActive = true
+                } else {
+                    // Handle the case where the token is empty (authentication failed)
+                    // You can show an error message to the user or take appropriate action.
+                }
+            } else {
+                // Handle the case where the login operation failed
+                // You can show an error message to the user or take appropriate action.
+            }
+        }
     }
 }
+
 
 struct loginPageView_Previews: PreviewProvider {
     static var previews: some View {

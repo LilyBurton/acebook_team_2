@@ -27,7 +27,7 @@ struct loginPageView: View {
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
             .ignoresSafeArea()
-            VStack {
+            VStack(spacing: 40) {
                 Image("makers-logo")
                     .resizable()
                     .scaledToFit()
@@ -38,16 +38,20 @@ struct loginPageView: View {
                 
             
                 TextField("Email", text: $email)
-                    .frame(width: 350, height: 50)
+                    .padding()
+                    .frame(width: 350)
                     .background(.white)
                     .cornerRadius(25)
-                    .padding()
+                    
+                    
+                
                 HStack {
                     if isSecured == true {
                         SecureField("Password", text: $password)
                     } else {
                         TextField("Password" , text: $password)
                     }
+                        
                     
                     Image(systemName: "eye.fill" )
                         .onTapGesture {
@@ -59,11 +63,12 @@ struct loginPageView: View {
                         }
                         .padding()
                 }
-                    .frame(width: 350, height: 50)
+                    .padding(.leading)
+                    .frame(width: 350)
                     .background(.white)
                     .cornerRadius(25)
-                    .padding()
                     
+//
                 Spacer()
                     
                 Button (action: { self.loginUser()

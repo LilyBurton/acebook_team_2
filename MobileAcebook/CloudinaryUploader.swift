@@ -32,7 +32,8 @@ class CloudinaryUploader {
             fatalError("API cloud name not found")}
         if let uploadPreset = ProcessInfo.processInfo.environment["UPLOAD_PRESET"] {
                    self.uploadPreset = uploadPreset
-        } else {
+        }
+        else {
             fatalError("API upload preset not found")}
         let config = CLDConfiguration(cloudName: cloudName, apiKey: apiKey, apiSecret: apiSecret)
         self.cloudinary = CLDCloudinary(configuration: config)

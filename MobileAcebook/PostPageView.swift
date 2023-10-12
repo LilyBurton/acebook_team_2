@@ -9,13 +9,18 @@ import SwiftUI
 
 struct PostPageView: View {
     
-    let authenticationService: AuthenticationService
     
-    init(authenticationService: AuthenticationService) {
-        self.authenticationService = authenticationService
+    let authenticationService: AuthenticationService
+    let postsService: PostsService
+    
+    init(authenticationService: AuthenticationService, postsService: PostsService) {
+        self.authenticationService = authenticationService;
+        self.postsService = postsService
     }
     
-    @State private var post = ""
+    @State private var postMessage = ""
+    @State private var isSumbitPostViewShowing = false
+    
     var body: some View {
             VStack {
                 ZStack {
@@ -39,20 +44,23 @@ struct PostPageView: View {
                 }
                 .onAppear {
                             
-                            authenticationService.getPosts()
+                        postsService.getPosts()
                         }
                 
                 .padding(.horizontal)
                 ScrollView {
                     HStack{
-                        AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
+                        AsyncImage(url: URL(string: "https://example.com/icon.png"))
                             .clipShape(Circle())
                             .frame(width: 60, height: 60)
                             .padding()
                         Spacer()
-                        TextField("Penny for your thoughts", text:$post)
+                        TextField("Penny for your thoughts", text:$postMessage)
                             .padding()
                             .frame(maxWidth: .infinity)
+                            .onTapGesture {
+                                isSumbitPostViewShowing = true
+                            }
                     }
                     Text("Hello")
                     Spacer() // Pushes the Hello text to the top
@@ -71,7 +79,7 @@ struct PostPageView: View {
                                 .padding()
                         }
                         HStack {
-                            Text("This is where the comment will go need to align left and improve font")
+                            Text("Stuff")
                                 .padding()
                         }
                         Image("colours")
@@ -102,30 +110,25 @@ struct PostPageView: View {
                                 .padding(.trailing)
                         }
                         .frame(height: 50)
-                    
-                        
                     }
-                    
-                
             }
-                
-                
-                
-                
 //                // Add your scrollable content here
 //                ForEach(1..<20) { i in
 //                    Text("Item \(i)")
 //                        .font(.largeTitle)
 //                }
+            }.sheet(isPresented: $isSumbitPostViewShowing) {
+                SumbitPostView(postsService: PostsService(authenticationService: authenticationService))
             }
         }
+    
     }
         
 
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostPageView(authenticationService: AuthenticationService())
+        PostPageView(authenticationService: AuthenticationService(), postsService: PostsService(authenticationService: AuthenticationService()))
     }
 }
 

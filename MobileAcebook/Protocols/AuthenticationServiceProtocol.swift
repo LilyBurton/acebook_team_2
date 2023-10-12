@@ -14,5 +14,5 @@ public protocol AuthenticationServiceProtocol {
 public protocol PostsServiceProtocol {
     func getPosts()
     
-    func createPost()
+    func createPost(message: String)
 }

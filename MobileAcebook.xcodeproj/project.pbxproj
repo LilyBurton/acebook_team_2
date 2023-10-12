@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235E70462AD6B04400C3106D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E70452AD6B04400C3106D /* ImagePicker.swift */; };
+		235E704B2AD7000600C3106D /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = 235E704A2AD7000600C3106D /* Cloudinary */; };
+		235E704D2AD700F700C3106D /* CloudinaryUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E704C2AD700F700C3106D /* CloudinaryUploader.swift */; };
 		AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */; };
 		AE5D85B42AC8A224009680C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D85B32AC8A224009680C6 /* Assets.xcassets */; };
 		AE5D85B72AC8A224009680C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D85B62AC8A224009680C6 /* Preview Assets.xcassets */; };
@@ -44,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		235E70452AD6B04400C3106D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		235E704C2AD700F700C3106D /* CloudinaryUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudinaryUploader.swift; sourceTree = "<group>"; };
 		AE5D85AC2AC8A221009680C6 /* MobileAcebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileAcebook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D85AF2AC8A221009680C6 /* MobileAcebookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAcebookApp.swift; sourceTree = "<group>"; };
 		AE5D85B32AC8A224009680C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235E704B2AD7000600C3106D /* Cloudinary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,10 +127,12 @@
 				AE5D85B32AC8A224009680C6 /* Assets.xcassets */,
 				AE5D85B52AC8A224009680C6 /* Preview Content */,
 				D94605362AD44B7D00327439 /* SignUpPageView.swift */,
-				D946053A2AD55B0B00327439 /* WelcomePageView.swift */,
 				D946053C2AD55BAD00327439 /* LoginPageView.swift */,
+				D946053A2AD55B0B00327439 /* WelcomePageView.swift */,
 				D94605402AD5B47800327439 /* PostPageView.swift */,
 				D94605422AD68E3A00327439 /* CommentView.swift */,
+				235E70452AD6B04400C3106D /* ImagePicker.swift */,
+				235E704C2AD700F700C3106D /* CloudinaryUploader.swift */,
 			);
 			path = MobileAcebook;
 			sourceTree = "<group>";
@@ -205,6 +213,9 @@
 			dependencies = (
 			);
 			name = MobileAcebook;
+			packageProductDependencies = (
+				235E704A2AD7000600C3106D /* Cloudinary */,
+			);
 			productName = MobileAcebook;
 			productReference = AE5D85AC2AC8A221009680C6 /* MobileAcebook.app */;
 			productType = "com.apple.product-type.application";
@@ -277,6 +288,9 @@
 				Base,
 			);
 			mainGroup = AE5D85A32AC8A221009680C6;
+			packageReferences = (
+				235E70492AD7000600C3106D /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
+			);
 			productRefGroup = AE5D85AD2AC8A221009680C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -320,12 +334,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D946053F2AD58DE800327439 /* Token.swift in Sources */,
+				235E704D2AD700F700C3106D /* CloudinaryUploader.swift in Sources */,
 				D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */,
 				AE5D85E12AC9AFA9009680C6 /* AuthenticationService.swift in Sources */,
 				AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */,
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
 				D94605412AD5B47800327439 /* PostPageView.swift in Sources */,
 				D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */,
+				235E70462AD6B04400C3106D /* ImagePicker.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
 				D94605432AD68E3A00327439 /* CommentView.swift in Sources */,
 				D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */,
@@ -651,6 +667,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		235E70492AD7000600C3106D /* XCRemoteSwiftPackageReference "cloudinary_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudinary/cloudinary_ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		235E704A2AD7000600C3106D /* Cloudinary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E70492AD7000600C3106D /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
+			productName = Cloudinary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE5D85A42AC8A221009680C6 /* Project object */;
 }

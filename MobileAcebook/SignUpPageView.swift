@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpPageView: View {
     let authenticationService: AuthenticationService
+    let uploader = CloudinaryUploader()
     
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
@@ -23,6 +24,10 @@ struct SignUpPageView: View {
     @State private var errorMessage: String? = nil
     //    @State private var attachFile = ""
     @State private var isActive = false
+    @State private var showingImagePicker = false
+    @State private var image: Image?
+    @State private var filterIntensity = 0.5
+    @State private var inputImage: UIImage?
     
     
     var body: some View {
@@ -33,47 +38,80 @@ struct SignUpPageView: View {
                            endPoint: .bottomTrailing)
             .ignoresSafeArea()
             
-            VStack(spacing: 40) {
+            VStack(spacing: 20) {
                 Image("makers-logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .accessibilityIdentifier("makers-logo")
-                
-                
-                
-                TextField("Email", text: $email)
-                    .padding()
-                    .frame(width: 350)
-                    .background(.white)
-                    .cornerRadius(25)
-                TextField("Username", text: $username)
-                    .padding()
-                    .frame(width: 350)
-                    .background(.white)
-                    .cornerRadius(25)
-                SecureField("Password", text: $password)
-                    .padding()
-                    .frame(width: 350)
-                    .background(.white)
-                    .cornerRadius(25)
-                SecureField("Confirm Password", text: $confirmPass)
-                    .padding()
-                    .frame(width: 350)
-                    .background(.white)
-                    .cornerRadius(25)
-                    if let error = errorMessage {
-                        Text(error)
-                            .foregroundColor(.red)
-                            .fixedSize(horizontal: false, vertical: true)
+                Group {
+                    TextField("Email", text: $email)
+                        .padding()
+                        .frame(width: 350)
+                        .background(.white)
+                        .cornerRadius(25)
+                    TextField("Username", text: $username)
+                        .padding()
+                        .frame(width: 350)
+                        .background(.white)
+                        .cornerRadius(25)
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .frame(width: 350)
+                        .background(.white)
+                        .cornerRadius(25)
+                    SecureField("Confirm Password", text: $confirmPass)
+                        .padding()
+                        .frame(width: 350)
+                        .background(.white)
+                        .cornerRadius(25)
+                }
+                HStack{
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.white)
+                            .frame(width: 100, height: 100)
+                        VStack(spacing: 0) {
+                               Text("Tap to")
+                               Text("select a")
+                               Text("profile")
+                               Text("image")
+        
+                           }
+                           .foregroundColor(.gray)
+                           .padding(2)
                             
+                        image?
+                            .resizable()
+                            .scaledToFit()
+                        
+                    }
+                    .onTapGesture {
+                        showingImagePicker = true
+                    }
+                    
+                    Button("Save") {
+                        if let uiImage = self.inputImage {
+                            uploader.upload(image: uiImage) { (publicId, error) in
+                                if let error = error {
+                                    print("Upload error: \(error.localizedDescription)")
+                                    
+                                } else if let publicId = publicId {
+                                    print("Uploaded successfully with public ID: \(publicId)")
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if let error = errorMessage {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
                     }
                 
-                
-                
-                
-                
-                Spacer()
+        
                 
                 Button(action: {
                     self.submitUser()
@@ -91,8 +129,19 @@ struct SignUpPageView: View {
             }
             
         }
+        .onChange(of: inputImage) { _ in loadImage() }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
+        
     }
+
     
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
     
     
     
@@ -152,5 +201,6 @@ struct SignUpPageView: View {
             }
         }
         
-    }
-}
+    }}
+
+

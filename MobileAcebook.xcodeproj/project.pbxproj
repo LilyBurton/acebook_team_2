@@ -25,8 +25,10 @@
 		D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053A2AD55B0B00327439 /* WelcomePageView.swift */; };
 		D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053C2AD55BAD00327439 /* LoginPageView.swift */; };
 		D946053F2AD58DE800327439 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946053E2AD58DE800327439 /* Token.swift */; };
-		D94605412AD5B47800327439 /* PostPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605402AD5B47800327439 /* PostPageView.swift */; };
 		D94605432AD68E3A00327439 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605422AD68E3A00327439 /* CommentView.swift */; };
+		D94605452AD724F200327439 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605442AD724F200327439 /* Post.swift */; };
+		D94605472AD8063000327439 /* PostPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605462AD8063000327439 /* PostPageView.swift */; };
+		D94605492AD8079700327439 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605482AD8079700327439 /* PostsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +69,10 @@
 		D946053A2AD55B0B00327439 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		D946053C2AD55BAD00327439 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		D946053E2AD58DE800327439 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		D94605402AD5B47800327439 /* PostPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPageView.swift; sourceTree = "<group>"; };
 		D94605422AD68E3A00327439 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		D94605442AD724F200327439 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D94605462AD8063000327439 /* PostPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPageView.swift; sourceTree = "<group>"; };
+		D94605482AD8079700327439 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5D85E02AC9AFA9009680C6 /* AuthenticationService.swift */,
+				D94605482AD8079700327439 /* PostsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			children = (
 				AE5D85E72AC9B29A009680C6 /* User.swift */,
 				D946053E2AD58DE800327439 /* Token.swift */,
+				D94605442AD724F200327439 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,17 +340,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D946053F2AD58DE800327439 /* Token.swift in Sources */,
+				D94605452AD724F200327439 /* Post.swift in Sources */,
 				235E704D2AD700F700C3106D /* CloudinaryUploader.swift in Sources */,
 				D94605372AD44B7D00327439 /* SignUpPageView.swift in Sources */,
 				AE5D85E12AC9AFA9009680C6 /* AuthenticationService.swift in Sources */,
 				AE5D85E62AC9B077009680C6 /* AuthenticationServiceProtocol.swift in Sources */,
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
-				D94605412AD5B47800327439 /* PostPageView.swift in Sources */,
+				D94605472AD8063000327439 /* PostPageView.swift in Sources */,
 				D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */,
 				235E70462AD6B04400C3106D /* ImagePicker.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
 				D94605432AD68E3A00327439 /* CommentView.swift in Sources */,
 				D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */,
+				D94605492AD8079700327439 /* PostsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

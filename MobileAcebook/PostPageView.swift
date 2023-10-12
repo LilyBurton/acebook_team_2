@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  PostPageView.swift
 //  MobileAcebook
 //
 //  Created by Kumani Kidd on 09/10/2023.
@@ -7,7 +7,14 @@
 
 import SwiftUI
 
-struct PostView: View {
+struct PostPageView: View {
+    
+    let authenticationService: AuthenticationService
+    
+    init(authenticationService: AuthenticationService) {
+        self.authenticationService = authenticationService
+    }
+    
     @State private var post = ""
     var body: some View {
             VStack {
@@ -30,6 +37,10 @@ struct PostView: View {
                         .accessibilityIdentifier("logOutButton")
                     }
                 }
+                .onAppear {
+                            
+                            authenticationService.getPosts()
+                        }
                 
                 .padding(.horizontal)
                 ScrollView {
@@ -114,7 +125,8 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView()
+        PostPageView(authenticationService: AuthenticationService())
     }
 }
+
 

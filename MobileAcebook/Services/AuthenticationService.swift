@@ -20,7 +20,8 @@ class AuthenticationService: AuthenticationServiceProtocol {
         let body: [String: String] = [
             "email": user.email,
             "username": user.username,
-            "password": user.password
+            "password": user.password,
+            "avatar": user.profilePublicId
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
 

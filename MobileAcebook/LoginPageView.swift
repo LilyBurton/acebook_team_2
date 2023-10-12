@@ -91,7 +91,7 @@ struct loginPageView: View {
                         .font(.system(size: 20, weight: .bold))
                         .cornerRadius(25)
                 }
-                NavigationLink("", destination: PostPageView(authenticationService: authenticationService), isActive: $isActive)
+                NavigationLink("", destination: PostPageView(authenticationService: authenticationService, postsService: PostsService(authenticationService: AuthenticationService())), isActive: $isActive)
                 Spacer()
                 
             }

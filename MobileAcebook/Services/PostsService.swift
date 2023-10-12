@@ -9,18 +9,23 @@ import Foundation
 
 class PostsService: PostsServiceProtocol {
     
-    var activeToken = ""
-    var postsArray = [String]()
+    var posts = [Post]()
+    
+    let authenticationService: AuthenticationService
+    
+    init(authenticationService: AuthenticationService) {
+        self.authenticationService = authenticationService
+    }
 
     
-    func createPost() {
+    func createPost(message: String) {
         var request = URLRequest(url: URL(string: "http://127.0.0.1:8080/posts")!)
         request.httpMethod = "POST"
-        request.setValue("Bearer \(activeToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body: [String: String] = [
-            "message": "Hello there"
+            "message": message
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
@@ -31,7 +36,7 @@ class PostsService: PostsServiceProtocol {
             }
             do {
                 let response = try JSONDecoder().decode(Token.self, from: data)
-                self.activeToken = response.token
+                self.authenticationService.activeToken = response.token
                 print(response)
             }
             catch {
@@ -51,7 +56,7 @@ class PostsService: PostsServiceProtocol {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(activeToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -64,8 +69,10 @@ class PostsService: PostsServiceProtocol {
                 let posts = decodedData.posts
                 let user = decodedData.user
                 
+                self.authenticationService.activeToken = decodedData.token
+                
                 DispatchQueue.main.async {
-            
+                    self.posts = posts
                     print(posts)
                     print(user)
                 }

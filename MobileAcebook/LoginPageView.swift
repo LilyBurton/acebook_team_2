@@ -67,8 +67,7 @@ struct loginPageView: View {
                 .frame(width: 350)
                 .background(.white)
                 .cornerRadius(25)
-                
-                //
+
                 Spacer()
                 
                 Button (action: { self.loginUser()

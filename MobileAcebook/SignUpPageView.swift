@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpPageView: View {
     let authenticationService: AuthenticationService
+    let uploader = CloudinaryUploader()
     
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
@@ -89,8 +90,18 @@ struct SignUpPageView: View {
                         showingImagePicker = true
                     }
                     
-                    Button("Save"){
-                        // save the picture
+                    Button("Save") {
+                        if let uiImage = self.inputImage {
+                            uploader.upload(image: uiImage) { (publicId, error) in
+                                if let error = error {
+                                    print("Upload error: \(error.localizedDescription)")
+                                    
+                                } else if let publicId = publicId {
+                                    print("Uploaded successfully with public ID: \(publicId)")
+                                    
+                                }
+                            }
+                        }
                     }
                 }
                 

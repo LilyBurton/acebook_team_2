@@ -83,7 +83,7 @@ struct loginPageView: View {
                         .font(.system(size: 20, weight: .bold))
                         .cornerRadius(25)
                 }
-                NavigationLink("", destination: PostPageView(), isActive: $isActive)
+                NavigationLink("", destination: PostPageView(authenticationService: authenticationService), isActive: $isActive)
                 Spacer()
                 
             }
@@ -96,12 +96,10 @@ struct loginPageView: View {
                 if !authenticationService.activeToken.isEmpty {
                     self.isActive = true
                 } else {
-                    // Handle the case where the token is empty (authentication failed)
-                    // You can show an error message to the user or take appropriate action.
+                   
                 }
             } else {
-                // Handle the case where the login operation failed
-                // You can show an error message to the user or take appropriate action.
+                
             }
         }
     }

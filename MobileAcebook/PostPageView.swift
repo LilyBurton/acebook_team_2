@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct PostPageView: View {
+    
+    let authenticationService: AuthenticationService
+    
+    init(authenticationService: AuthenticationService) {
+        self.authenticationService = authenticationService
+    }
+    
     @State private var post = ""
     var body: some View {
             VStack {
@@ -30,6 +37,10 @@ struct PostPageView: View {
                         .accessibilityIdentifier("logOutButton")
                     }
                 }
+                .onAppear {
+                            
+                            authenticationService.getPosts()
+                        }
                 
                 .padding(.horizontal)
                 ScrollView {
@@ -114,7 +125,8 @@ struct PostPageView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostPageView()
+        PostPageView(authenticationService: AuthenticationService())
     }
 }
+
 

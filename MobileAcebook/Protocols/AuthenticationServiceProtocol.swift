@@ -10,3 +10,9 @@ public protocol AuthenticationServiceProtocol {
     
     func login(user: UserLogin, closure: @escaping (Bool) -> Void)
 }
+
+public protocol PostsServiceProtocol {
+    func getPosts()
+    
+    func createPost()
+}

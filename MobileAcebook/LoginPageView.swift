@@ -102,6 +102,8 @@ struct loginPageView: View {
             authenticationService.login(user: user) { success in
                 if success {
                     if !authenticationService.activeToken.isEmpty {
+                        email = ""
+                        password = ""
                         self.isActive = true
                           errorMessage = nil
                     } else {

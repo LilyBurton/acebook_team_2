@@ -9,6 +9,7 @@ public struct User {
     let email: String
     let username: String
     let password: String
+    let profilePublicId: String
 }
 
 public struct UserLogin {

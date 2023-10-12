@@ -20,6 +20,8 @@ struct SignUpPageView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var confirmPass = ""
+    @State private var profilePublicId = ""
+   
     
     @State private var errorMessage: String? = nil
     //    @State private var attachFile = ""
@@ -98,7 +100,7 @@ struct SignUpPageView: View {
 
                                 } else if let publicId = publicId {
                                     print("Uploaded successfully with public ID: \(publicId)")
-
+                                    profilePublicId = publicId
                                 }
                             }
                         }
@@ -180,7 +182,7 @@ struct SignUpPageView: View {
             errorMessage = "Passwords must match"
             return
         } else {
-            let user = User(email: email, username: username, password: password)
+            let user = User(email: email, username: username, password: password, profilePublicId: profilePublicId)
             authenticationService.signUp(user: user){ message in
                 if message == "Email address already exists" {
                     errorMessage = message

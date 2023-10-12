@@ -20,6 +20,7 @@ struct loginPageView: View {
     @State private var password = ""
     @State private var isSecured: Bool = true
     @State private var isActive = false
+    @State private var errorMessage: String? = nil
     
     var body: some View {
         ZStack {
@@ -67,8 +68,16 @@ struct loginPageView: View {
                 .frame(width: 350)
                 .background(.white)
                 .cornerRadius(25)
+                
+                if let error = errorMessage {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
 
                 Spacer()
+                
+               
                 
                 Button (action: { self.loginUser()
                     
@@ -89,20 +98,25 @@ struct loginPageView: View {
         }
     }
     func loginUser() {
-        let user = UserLogin(email: email, password: password)
-        authenticationService.login(user: user) { success in
-            if success {
-                if !authenticationService.activeToken.isEmpty {
-                    self.isActive = true
+            let user = UserLogin(email: email, password: password)
+            authenticationService.login(user: user) { success in
+                if success {
+                    if !authenticationService.activeToken.isEmpty {
+                        email = ""
+                        password = ""
+                        self.isActive = true
+                          errorMessage = nil
+                    } else {
+                       
+                    }
                 } else {
-                   
+                    errorMessage = "Invalid username and/or password"
+
                 }
-            } else {
-                
             }
-        }
     }
 }
+
 
 
 struct loginPageView_Previews: PreviewProvider {

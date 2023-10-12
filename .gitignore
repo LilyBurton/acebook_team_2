@@ -4,5 +4,4 @@
 DerivedData/
 build/
 **/.DS_Store
-*.xcodeproj/xcshareddata/
 

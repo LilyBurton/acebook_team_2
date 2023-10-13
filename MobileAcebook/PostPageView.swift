@@ -29,8 +29,8 @@ struct PostPageView: View {
             VStack {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [ .orange, .white]),
-                                   startPoint: .topLeading,
-                                   endPoint: .bottomTrailing)
+                                   startPoint: .top,
+                                   endPoint: .bottom)
                     .ignoresSafeArea()
                     .frame(maxWidth: .infinity, maxHeight: 80)
                     HStack {
@@ -53,6 +53,7 @@ struct PostPageView: View {
                 
                 .padding(.horizontal)
                 ScrollView {
+                    Text("Hello Rachel")
                     HStack{
                         AsyncImage(url: URL(string: "https://res.cloudinary.com/\(cloudName ?? "defaultCloudName")/image/upload/v1697135636/pmurtikblzn0mgpfip9b.jpg")) { phase in
                             if case .success(let image) = phase {
@@ -72,47 +73,25 @@ struct PostPageView: View {
                             .padding()
                         Spacer()
                         TextField("Penny for your thoughts", text:$postMessage)
-                            .padding()
+                            .padding(.bottom)
                             .frame(maxWidth: .infinity)
                             .onTapGesture {
                                 isSumbitPostViewShowing = true
                             }
                     }
-                    Text("Hello")
-                    Spacer() // Pushes the Hello text to the top
+                    
+                    Spacer()
                     
                     VStack {
+
                         HStack {
-                            AsyncImage(url: URL(string: "https://res.cloudinary.com/\(cloudName ?? "defaultCloudName")/image/upload/v1697135636/pmurtikblzn0mgpfip9b.jpg")) { phase in
-                                if case .success(let image) = phase {
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 70, height: 70)
-                                } else {
-                                    // Handle other cases, e.g., placeholder, error, etc.
-                                    ProgressView()
-                                        .frame(width: 30, height: 30)
-                                }
-                            }
-                            .clipShape(Circle())
-                                
-                                .padding()
-                            Text("Username")
-                                .padding()
-                            Spacer()
-                            Image(systemName: "ellipsis")
-                                .rotationEffect(.degrees(-90))
-                                .padding()
-                        }
-                        HStack {
-                            Text("Stuff")
-                                .padding()
+                            Text("My latest art. What do you think?")
+                                .multilineTextAlignment(.leading)
                         }
                         Image("colours")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 350, height: 300)
+                            .frame(width: 350)
                         HStack {
                             Image(systemName: "hand.thumbsup.circle.fill")
                                 .foregroundStyle(.orange)
@@ -121,6 +100,42 @@ struct PostPageView: View {
                             Spacer()
                             
                             Text("200")
+                            Image(systemName: "ellipsis.bubble.fill")
+                                .foregroundStyle(.orange)
+                                .padding(.trailing)
+                        }
+                        HStack {
+                            Image(systemName: "hand.thumbsup")
+                                .padding(.leading)
+                            Text("Like")
+                            
+                            Spacer()
+                            Text("Comment")
+                            Image(systemName: "bubble.left")
+                                .padding(.trailing)
+                        }
+                        .frame(height: 50)
+                        Divider()
+                        
+                    }
+                    VStack {
+
+                        HStack {
+                            Text("This sold in less than an hour!!")
+                                .multilineTextAlignment(.leading)
+                        }
+                        Image("prettycolours")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 350)
+                        HStack {
+                            Image(systemName: "hand.thumbsup.circle.fill")
+                                .foregroundStyle(.orange)
+                                .padding(.leading)
+                            Text("32")
+                            Spacer()
+                            
+                            Text("100")
                             Image(systemName: "ellipsis.bubble.fill")
                                 .foregroundStyle(.orange)
                                 .padding(.trailing)

@@ -46,7 +46,7 @@ struct SumbitPostView: View {
                     .clipShape(Circle())
                         .padding()
                     
-                    Text("Username")
+                    Text("Commenting as Rachel")
                     
                     Spacer()
                 }

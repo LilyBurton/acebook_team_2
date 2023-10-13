@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cloudinary/cloudinary_ios.git",
       "state" : {
-        "revision" : "13ec701efe8667963faaab9477668d1c56205e7d",
-        "version" : "4.1.1"
+        "revision" : "3f27402baad39b619da8c5bc1a829075fcfaf763",
+        "version" : "4.2.0"
       }
     }
   ],

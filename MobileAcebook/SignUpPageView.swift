@@ -30,6 +30,21 @@ struct SignUpPageView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
     @State private var inputImage: UIImage?
+    @State private var isUploading = false
+    @State private var uploadSuccessful = false
+    @State private var uploadFailed = false
+    
+    var buttonLabel: String {
+        if isUploading {
+            return "Uploading..."
+        } else if uploadSuccessful {
+            return "Image loaded successfully"
+        } else if uploadFailed {
+            return "Upload Failed, Try Again"
+        } else {
+            return "Save"
+        }
+    }
     
     
     var body: some View {
@@ -92,18 +107,24 @@ struct SignUpPageView: View {
                         showingImagePicker = true
                     }
                     
-                    Button("Save") {
+                    Button(action: {
                         if let uiImage = self.inputImage {
+                            isUploading = true
                             uploader.upload(image: uiImage) { (publicId, error) in
+                                isUploading = false
                                 if let error = error {
                                     print("Upload error: \(error.localizedDescription)")
-
+                                    uploadFailed = true
                                 } else if let publicId = publicId {
                                     print("Uploaded successfully with public ID: \(publicId)")
                                     profilePublicId = publicId
+                                    uploadSuccessful = true
                                 }
                             }
                         }
+                    }) {
+                        Text(buttonLabel)
+                            .foregroundColor(.black)
                     }
                 }
                 

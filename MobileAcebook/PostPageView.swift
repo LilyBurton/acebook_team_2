@@ -12,10 +12,14 @@ struct PostPageView: View {
     
     let authenticationService: AuthenticationService
     let postsService: PostsService
+    let cloudName: String?
+    
+    
     
     init(authenticationService: AuthenticationService, postsService: PostsService) {
         self.authenticationService = authenticationService;
         self.postsService = postsService
+        self.cloudName = ProcessInfo.processInfo.environment["CLOUD_NAME"]
     }
     
     @State private var postMessage = ""
@@ -50,9 +54,21 @@ struct PostPageView: View {
                 .padding(.horizontal)
                 ScrollView {
                     HStack{
-                        AsyncImage(url: URL(string: "https://example.com/icon.png"))
-                            .clipShape(Circle())
-                            .frame(width: 60, height: 60)
+                        AsyncImage(url: URL(string: "https://res.cloudinary.com/\(cloudName ?? "defaultCloudName")/image/upload/v1697135636/pmurtikblzn0mgpfip9b.jpg")) { phase in
+                            if case .success(let image) = phase {
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                            } else {
+                                // Handle other cases, e.g., placeholder, error, etc.
+                                ProgressView()
+                                    .frame(width: 30, height: 30)
+                            }
+                        }
+                        .clipShape(Circle())
+                            
+
                             .padding()
                         Spacer()
                         TextField("Penny for your thoughts", text:$postMessage)
@@ -67,9 +83,20 @@ struct PostPageView: View {
                     
                     VStack {
                         HStack {
-                            AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
-                                .clipShape(Circle())
-                                .frame(width:30, height: 30)
+                            AsyncImage(url: URL(string: "https://res.cloudinary.com/\(cloudName ?? "defaultCloudName")/image/upload/v1697135636/pmurtikblzn0mgpfip9b.jpg")) { phase in
+                                if case .success(let image) = phase {
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 70, height: 70)
+                                } else {
+                                    // Handle other cases, e.g., placeholder, error, etc.
+                                    ProgressView()
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            .clipShape(Circle())
+                                
                                 .padding()
                             Text("Username")
                                 .padding()

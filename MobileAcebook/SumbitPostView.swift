@@ -12,9 +12,11 @@ import SwiftUI
 struct SumbitPostView: View {
     
     let postsService: PostsService
+    let cloudName: String?
     
     init(postsService: PostsService) {
         self.postsService = postsService
+        self.cloudName = ProcessInfo.processInfo.environment["CLOUD_NAME"]
     }
     
     
@@ -29,9 +31,19 @@ struct SumbitPostView: View {
             
             VStack{
                 HStack {
-                    AsyncImage(url: URL(string: "https://example.com/icon.png"))
-                        .clipShape(Circle())
-                        .frame(width: 60, height: 60)
+                    AsyncImage(url: URL(string: "https://res.cloudinary.com/\(cloudName ?? "defaultCloudName")/image/upload/v1697135636/pmurtikblzn0mgpfip9b.jpg")) { phase in
+                        if case .success(let image) = phase {
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                        } else {
+                            // Handle other cases, e.g., placeholder, error, etc.
+                            ProgressView()
+                                .frame(width: 30, height: 30)
+                        }
+                    }
+                    .clipShape(Circle())
                         .padding()
                     
                     Text("Username")
@@ -62,9 +74,9 @@ struct SumbitPostView: View {
     }
     
     func createPost() {
-        postsService.createPost(message: text)
-        PostPageView(authenticationService: AuthenticationService(), postsService: PostsService(authenticationService: AuthenticationService()))
-    }
+           postsService.createPost(message: text)
+           PostPageView(authenticationService: AuthenticationService(), postsService: PostsService(authenticationService: AuthenticationService()))
+       }
 }
 
 struct SumbitPostView_Preview: PreviewProvider {

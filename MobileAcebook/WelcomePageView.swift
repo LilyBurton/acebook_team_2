@@ -41,7 +41,7 @@ struct WelcomePageView: View {
                     Spacer()
                     
                     
-                    NavigationLink(destination: loginPageView(authenticationService: authenticationService)) {
+                    NavigationLink(destination: LoginPageView()) {
                         Text("Login")
                             .frame(width: 280, height: 50)
                             .background(.black.gradient)

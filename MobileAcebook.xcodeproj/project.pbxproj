@@ -29,6 +29,7 @@
 		D94605492AD8079700327439 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94605482AD8079700327439 /* PostsService.swift */; };
 		D95FE61A2AD82D9C00C907BA /* PostPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95FE6192AD82D9C00C907BA /* PostPageView.swift */; };
 		D95FE61C2AD82E9E00C907BA /* SumbitPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95FE61B2AD82E9E00C907BA /* SumbitPostView.swift */; };
+		D9A5AFAF2AD868540034C14C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5AFAE2AD868540034C14C /* PostView.swift */; };
 		D9FAE1542AD84D2100F95D75 /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = D9FAE1532AD84D2100F95D75 /* Cloudinary */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		D94605482AD8079700327439 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
 		D95FE6192AD82D9C00C907BA /* PostPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPageView.swift; sourceTree = "<group>"; };
 		D95FE61B2AD82E9E00C907BA /* SumbitPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumbitPostView.swift; sourceTree = "<group>"; };
+		D9A5AFAE2AD868540034C14C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				235E704C2AD700F700C3106D /* CloudinaryUploader.swift */,
 				D95FE6192AD82D9C00C907BA /* PostPageView.swift */,
 				D95FE61B2AD82E9E00C907BA /* SumbitPostView.swift */,
+				D9A5AFAE2AD868540034C14C /* PostView.swift */,
 			);
 			path = MobileAcebook;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				AE5D85B02AC8A221009680C6 /* MobileAcebookApp.swift in Sources */,
 				D946053B2AD55B0B00327439 /* WelcomePageView.swift in Sources */,
 				235E70462AD6B04400C3106D /* ImagePicker.swift in Sources */,
+				D9A5AFAF2AD868540034C14C /* PostView.swift in Sources */,
 				AE5D85E82AC9B29A009680C6 /* User.swift in Sources */,
 				D94605432AD68E3A00327439 /* CommentView.swift in Sources */,
 				D946053D2AD55BAD00327439 /* LoginPageView.swift in Sources */,

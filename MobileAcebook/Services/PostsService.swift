@@ -7,9 +7,10 @@
 
 import Foundation
 
-class PostsService: PostsServiceProtocol {
+class PostsService: ObservableObject {
     
-    var posts = [Post]()
+    @Published var posts: [Post] = []
+    @Published var postUser: PostUser?
     
     let authenticationService: AuthenticationService
     
@@ -21,7 +22,7 @@ class PostsService: PostsServiceProtocol {
     func createPost(message: String) {
         var request = URLRequest(url: URL(string: "http://127.0.0.1:8080/posts")!)
         request.httpMethod = "POST"
-        request.setValue("Bearer \(authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(self.authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body: [String: String] = [
@@ -53,10 +54,10 @@ class PostsService: PostsServiceProtocol {
             print("Invalid URL")
             return
         }
-        
+        print("Loading: \(self.authenticationService.activeToken)")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(self.authenticationService.activeToken)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -68,13 +69,11 @@ class PostsService: PostsServiceProtocol {
                 let decodedData = try JSONDecoder().decode(ResponseData.self, from: data)
                 let posts = decodedData.posts
                 let user = decodedData.user
-                
                 self.authenticationService.activeToken = decodedData.token
                 
                 DispatchQueue.main.async {
                     self.posts = posts
-                    print(posts)
-                    print(user)
+                    self.postUser = user
                 }
             } catch {
                 print("Decoding error: \(error)")
@@ -85,4 +84,17 @@ class PostsService: PostsServiceProtocol {
         }
         task.resume()
     }
+    
+    func loginAndFetchPosts(user: UserLogin, completion: @escaping (Bool) -> Void) {
+            authenticationService.login(user: user) { [weak self] success in
+                guard let self = self else { return }
+                if success {
+                    print("Login successful!")
+                    self.getPosts()
+                } else {
+                    print("Login failed!")
+                }
+            }
+        }
+    
 }

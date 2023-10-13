@@ -14,7 +14,7 @@ class CloudinaryUploader {
     let apiKey: String
     let apiSecret: String
     let cloudName: String
-    let uploadPreset: String
+//    let uploadPreset: String
 
 
     init() {
@@ -30,11 +30,11 @@ class CloudinaryUploader {
                    self.cloudName = cloudName
         } else {
             fatalError("API cloud name not found")}
-        if let uploadPreset = ProcessInfo.processInfo.environment["UPLOAD_PRESET"] {
-                   self.uploadPreset = uploadPreset
-        }
-        else {
-            fatalError("API upload preset not found")}
+//        if let uploadPreset = ProcessInfo.processInfo.environment["UPLOAD_PRESET"] {
+//                   self.uploadPreset = uploadPreset
+//        }
+//        else {
+//            fatalError("API upload preset not found")}
         let config = CLDConfiguration(cloudName: cloudName, apiKey: apiKey, apiSecret: apiSecret)
         self.cloudinary = CLDCloudinary(configuration: config)
     }
@@ -46,7 +46,7 @@ class CloudinaryUploader {
         }
 
         let params = CLDUploadRequestParams()
-        cloudinary.createUploader().upload(data: imageData, uploadPreset: uploadPreset, params: params).response { (response, error) in
+        cloudinary.createUploader().upload(data: imageData, uploadPreset: "dpbejzbt", params: params).response { (response, error) in
             if let error = error {
                 completion(nil, error)
             } else if let publicId = response?.publicId {

@@ -11,7 +11,7 @@ struct PostPageView: View {
     
     
     let authenticationService: AuthenticationService
-    let postsService: PostsService
+    @ObservedObject var postsService: PostsService
     
     init(authenticationService: AuthenticationService, postsService: PostsService) {
         self.authenticationService = authenticationService;
@@ -43,8 +43,8 @@ struct PostPageView: View {
                     }
                 }
                 .onAppear {
-                            
-                        postsService.getPosts()
+                    postsService.getPosts()
+    
                         }
                 
                 .padding(.horizontal)
@@ -62,63 +62,22 @@ struct PostPageView: View {
                                 isSumbitPostViewShowing = true
                             }
                     }
-                    Text("Hello")
+                    
                     Spacer() // Pushes the Hello text to the top
                     
-                    VStack {
-                        HStack {
-                            AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
-                                .clipShape(Circle())
-                                .frame(width:30, height: 30)
-                                .padding()
-                            Text("Username")
-                                .padding()
-                            Spacer()
-                            Image(systemName: "ellipsis")
-                                .rotationEffect(.degrees(-90))
-                                .padding()
+                    ForEach(postsService.posts) { post in
+                        PostView(post: post, user: postsService.postUser ?? exampleUser)
                         }
-                        HStack {
-                            Text("Stuff")
-                                .padding()
-                        }
-                        Image("colours")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 350, height: 300)
-                        HStack {
-                            Image(systemName: "hand.thumbsup.circle.fill")
-                                .foregroundStyle(.orange)
-                                .padding(.leading)
-                            Text("56")
-                            Spacer()
-                            
-                            Text("200")
-                            Image(systemName: "ellipsis.bubble.fill")
-                                .foregroundStyle(.orange)
-                                .padding(.trailing)
-                        }
-                        Divider()
-                        HStack {
-                            Image(systemName: "hand.thumbsup")
-                                .padding(.leading)
-                            Text("Like")
-                            
-                            Spacer()
-                            Text("Comment")
-                            Image(systemName: "bubble.left")
-                                .padding(.trailing)
-                        }
-                        .frame(height: 50)
-                    }
             }
-//                // Add your scrollable content here
-//                ForEach(1..<20) { i in
-//                    Text("Item \(i)")
-//                        .font(.largeTitle)
-//                }
             }.sheet(isPresented: $isSumbitPostViewShowing) {
                 SumbitPostView(postsService: PostsService(authenticationService: authenticationService))
+            }
+            .task {
+                do {
+                    try await postsService.getPosts()
+                } catch {
+                    print("Error loading posts")
+                }
             }
         }
     
@@ -126,7 +85,7 @@ struct PostPageView: View {
         
 
 
-struct PostView_Previews: PreviewProvider {
+struct PostPageView_Previews: PreviewProvider {
     static var previews: some View {
         PostPageView(authenticationService: AuthenticationService(), postsService: PostsService(authenticationService: AuthenticationService()))
     }

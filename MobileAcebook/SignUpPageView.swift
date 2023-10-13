@@ -126,7 +126,7 @@ struct SignUpPageView: View {
                         .font(.system(size: 20, weight: .bold))
                         .cornerRadius(25)
                 }
-                NavigationLink("", destination: loginPageView(authenticationService: authenticationService), isActive: $isActive)
+                NavigationLink("", destination: LoginPageView(), isActive: $isActive)
                 
             }
             
